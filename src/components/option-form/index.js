@@ -1,7 +1,7 @@
 import React from 'react';
 import './_option-form.scss';
 
-class OptionForm extends Ract.Component{
+class OptionForm extends React.Component{
   constructor(props){
     super(props);
 
@@ -10,7 +10,7 @@ class OptionForm extends Ract.Component{
 
     this.state = { title, weight };
 
-    this.handleChage = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -45,11 +45,13 @@ class OptionForm extends Ract.Component{
           placeholder='choice'
           type='text'
           value={this.state.title}
-          onChage={this.handleChange}
+          onChange={this.handleChange}
         />
 
-        <button
+        <button type='submit'>{this.props.submitTitle}</button>
       </form>
     )
   }
 }
+
+export default OptionForm

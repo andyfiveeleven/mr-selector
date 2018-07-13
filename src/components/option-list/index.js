@@ -30,4 +30,4 @@ class OptionList extends React.Component{
   }
 }
 
-export default TodoList
+export default OptionList
