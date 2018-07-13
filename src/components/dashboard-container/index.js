@@ -12,7 +12,9 @@ class DashboardContainer extends React.Component {
       //fill in some stuff here probably
     }
 
-    //binders here
+    this.optionCreate = this.optionCreate.bind(this);
+    this.optionDelete = this.optionDelete.bind(this);
+    this.optionUpdate = this.optionUpdate.bind(this);
   }
 
   optionCreate(option){
@@ -23,7 +25,7 @@ class DashboardContainer extends React.Component {
     }))
   }
 
-  optionRemove(option){
+  optionDelete(option){
     let {app} = this.props;
     app.setState(prevState => ({
       options: prevState.options.filter((item) => {
@@ -32,7 +34,7 @@ class DashboardContainer extends React.Component {
     }))
   }
 
-  optionupdate(option){
+  optionUpdate(option){
     let {app} = this.props;
     app.setState(prevState => ({
       options: prevState.options.map((item) => {
