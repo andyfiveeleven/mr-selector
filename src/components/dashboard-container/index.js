@@ -3,6 +3,7 @@ import uuid from 'uuid/v1';
 
 import OptionList from '../option-list';
 import OptionForm from '../option-form';
+import Modal from '../modal'
 
 let renderIf = (test, component) => test ? component : undefined
 
@@ -11,7 +12,8 @@ class DashboardContainer extends React.Component {
     super(props);
 
     this.state = {
-      choiceMade: false
+      choiceMade: false,
+      choice: ''
     }
 
     this.optionCreate = this.optionCreate.bind(this);
