@@ -12,8 +12,6 @@ class DashboardContainer extends React.Component {
     super(props);
 
     this.state = {
-      choiceMade: false,
-      choice: ''
     }
 
     this.optionCreate = this.optionCreate.bind(this);
@@ -51,8 +49,12 @@ class DashboardContainer extends React.Component {
   selectorFunction(){
     let {app} = this.props
     let position = Math.floor(Math.random()*app.state.options.length)
-    console.log()
     console.log('choice', app.state.options[position].title);
+    let chosenOption = app.state.options[position].title;
+    app.setState(prevState =>({
+      choice: chosenOption,
+      choiceMade: true
+    }))
   }
 
   render(){
@@ -79,6 +81,11 @@ class DashboardContainer extends React.Component {
           onClick={this.selectorFunction}
           >
         >RANDOM SELECTION</button>
+        {renderIf(app.state.choiceMade,
+           <Modal choice={app.state.choice} close={() => app.setState({choiceMade:false})} reset={() => app.setState({options: [], choice:'', choiceMade: false})}>
+           </Modal>
+
+        )}
       </section>
     )
   }

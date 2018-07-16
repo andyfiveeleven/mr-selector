@@ -9,7 +9,9 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      options: []
+      options: [],
+      choice: '',
+      choiceMade: false
     }
 
     this.getApp = this.getApp.bind(this);
