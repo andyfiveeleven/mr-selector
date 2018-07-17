@@ -48,13 +48,19 @@ class DashboardContainer extends React.Component {
 
   selectorFunction(){
     let {app} = this.props
-    let position = Math.floor(Math.random()*app.state.options.length)
-    console.log('choice', app.state.options[position].title);
-    let chosenOption = app.state.options[position].title;
-    app.setState(prevState =>({
-      choice: chosenOption,
-      choiceMade: true
-    }))
+    if(app.state.options.length > 0){
+      let position = Math.floor(Math.random()*app.state.options.length)
+      console.log('choice', app.state.options[position].title);
+      let chosenOption = app.state.options[position].title;
+      app.setState(prevState =>({
+        choice: chosenOption,
+        modalOpen: true
+      }))
+    }else{
+      app.setState(prevState => ({
+        modalOpen: true
+      }))
+    }
   }
 
   render(){
@@ -81,8 +87,25 @@ class DashboardContainer extends React.Component {
           onClick={this.selectorFunction}
           >
         >RANDOM SELECTION</button>
-        {renderIf(app.state.choiceMade,
-           <Modal choice={app.state.choice} close={() => app.setState({choiceMade:false})} reset={() => app.setState({options: [], choice:'', choiceMade: false})}>
+
+        {renderIf(app.state.modalOpen && app.state.options.length === 0,
+          <Modal
+           close={() => app.setState({modalOpen:false})}
+           reset={() => app.setState({options: [], choice:'', modalOpen: false})}
+           header='You Must Enter an Option'
+           button2='Start over, reset everything'
+          >
+          </Modal>
+        )}
+
+        {renderIf(app.state.modalOpen && app.state.options.length > 0,
+           <Modal
+           flavor={app.state.choice}
+           close={() => app.setState({modalOpen:false})}
+           reset={() => app.setState({options: [], choice:'', modalOpen: false})}
+           header='Your selection is:'
+           button2='Reset Mr Selector'
+           >
            </Modal>
 
         )}

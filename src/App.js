@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       options: [],
       choice: '',
-      choiceMade: false
+      modalOpen: false
     }
 
     this.getApp = this.getApp.bind(this);
