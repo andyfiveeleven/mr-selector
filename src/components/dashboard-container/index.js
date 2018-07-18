@@ -3,7 +3,8 @@ import uuid from 'uuid/v1';
 
 import OptionList from '../option-list';
 import OptionForm from '../option-form';
-import Modal from '../modal'
+import Modal from '../modal';
+import Navbar from '../navbar';
 
 let renderIf = (test, component) => test ? component : undefined
 
@@ -70,7 +71,7 @@ class DashboardContainer extends React.Component {
 
     return (
       <section className='dashboard'>
-        <h1> look, a dashbarod container</h1>
+        <Navbar />
 
         <OptionForm
           handleSubmit={this.optionCreate}

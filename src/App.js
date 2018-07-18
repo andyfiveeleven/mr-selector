@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import logo from './logo.svg';
-import DashboardContainer from './components/dashboard-container'
+import DashboardContainer from './components/dashboard-container';
+import Navbar from './components/navbar';
 
 import './App.css';
 
@@ -31,7 +32,6 @@ class App extends Component {
   render() {
     return (
       <main>
-        <h1> hello </h1>
         <BrowserRouter>
           <section>
             <Route exact path="/" component={() =>
