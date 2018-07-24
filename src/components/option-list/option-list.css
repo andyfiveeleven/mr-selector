@@ -1,0 +1,9 @@
+.option-list ul li {
+  padding: 5vw;
+}
+
+.option-list ul li .xOut {
+  float: right;
+  width: 10vw;
+
+}

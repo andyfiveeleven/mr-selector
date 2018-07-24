@@ -1,6 +1,6 @@
 import React from 'react';
 import OptionForm from '../option-form';
-import './_option-list.scss';
+import './option-list.css';
 
 class OptionList extends React.Component{
   render(){
@@ -9,12 +9,13 @@ class OptionList extends React.Component{
         <ul>
           {this.props.options.map((item, i) =>
             <li key={i}>
-              <button onClick={() => this.props.optionRemove(item)}>x</button>
+              <button className='xOut' onClick={() => this.props.optionRemove(item)}>x</button>
               <div>
-                <p>title: {item.title}</p>
+                <p className='list-item-title'>{item.title}</p>
               </div>
 
               <OptionForm
+                className='list-item-form'
                 option={item}
                 submitTitle='update option'
                 handleSubmit={(option) => {
